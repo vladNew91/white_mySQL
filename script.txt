@@ -41,11 +41,11 @@ CONSTRAINT `users`
 ENGINE = InnoDB;
 
 insert into users values 
-(null, 'Ivan', 'Ivanov', '1@gmail.com', '123'), 
-(null, 'Petr', 'Petrov', '2@gmail.com', '321'), 
-(null, 'Sidr', 'Sidorov', '3@gmail.com', '456'), 
-(null, 'Anna', 'Chubais', '4@gmail.com', '654'), 
-(null, 'Maria', 'Magdalina', '5@gmail.com', '333');
+(1, 'Ivan', 'Ivanov', '1@gmail.com', '123'), 
+(2, 'Petr', 'Petrov', '2@gmail.com', '321'), 
+(3, 'Sidr', 'Sidorov', '3@gmail.com', '456'), 
+(4, 'Anna', 'Chubais', '4@gmail.com', '654'), 
+(5, 'Maria', 'Magdalina', '5@gmail.com', '333');
 
 
 insert into children values 
