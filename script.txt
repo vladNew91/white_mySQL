@@ -9,9 +9,9 @@ CREATE TABLE IF NOT EXISTS `yyy`.`users`
 (
   `id` INT NOT NULL AUTO_INCREMENT,
   
-`first name` VARCHAR(45) NOT NULL DEFAULT '',
+`firstname` VARCHAR(45) NOT NULL DEFAULT '',
   
-`last name` VARCHAR(45) NOT NULL,
+`lastname` VARCHAR(45) NOT NULL,
   
 `email` VARCHAR(45) NOT NULL,
   
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `yyy`.`children`
 (
   `id` INT NOT NULL AUTO_INCREMENT,
   
-`first name` VARCHAR(45) NOT NULL,
+`firstname` VARCHAR(45) NOT NULL,
   
 `parent` INT NOT NULL COMMENT 'link to table users, delete user - it will delete his children',
   
@@ -40,7 +40,9 @@ CONSTRAINT `users`
     ON UPDATE CASCADE) 
 ENGINE = InnoDB;
 
-insert into users values 
+insert into users
+  (id, firstname, lastname, email, password)
+values 
 (1, 'Ivan', 'Ivanov', '1@gmail.com', '123'), 
 (2, 'Petr', 'Petrov', '2@gmail.com', '321'), 
 (3, 'Sidr', 'Sidorov', '3@gmail.com', '456'), 
@@ -48,7 +50,9 @@ insert into users values
 (5, 'Maria', 'Magdalina', '5@gmail.com', '333');
 
 
-insert into children values 
+insert into children
+  (id, firstname, parent, email, password)
+values 
 (1, 'Maria', 1, '1@gmail.com' '123'), 
 (2, 'Sasha', 1, '2@gmail.com', '321'), 
 (3, 'Vova', 1, '3@gmail.com', '456'), 
