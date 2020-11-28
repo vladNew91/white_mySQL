@@ -1,0 +1,91 @@
+CREATE USER 'novyi_polzovatel'@'localhost' IDENTIFIED BY 'parol';
+
+GRANT ALL PRIVILEGES ON * . * TO 'novyi_polzovatel'@'localhost';
+
+CREATE SCHEMA IF NOT EXISTS `yyy` DEFAULT CHARACTER SET utf8 ;
+
+
+CREATE TABLE IF NOT EXISTS `yyy`.`users` 
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  
+`first name` VARCHAR(45) NOT NULL DEFAULT '',
+  
+`last name` VARCHAR(45) NOT NULL,
+  
+`email` VARCHAR(45) NOT NULL,
+  
+`password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`)) 
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `yyy`.`children` 
+(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  
+`first name` VARCHAR(45) NOT NULL,
+  
+`parent` INT NOT NULL COMMENT 'link to table users, delete user - it will delete his children',
+  
+`email` VARCHAR(45) CHARACTER SET 'latin5' NOT NULL,
+  
+`password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `users_idx` (`parent` ASC) VISIBLE,
+  
+CONSTRAINT `users`
+    FOREIGN KEY (`parent`)
+    REFERENCES `yyy`.`users` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE) 
+ENGINE = InnoDB;
+
+insert into users values 
+(null, 'Ivan', 'Ivanov', '1@gmail.com', '123'), 
+(null, 'Petr', 'Petrov', '2@gmail.com', '321'), 
+(null, 'Sidr', 'Sidorov', '3@gmail.com', '456'), 
+(null, 'Anna', 'Chubais', '4@gmail.com', '654'), 
+(null, 'Maria', 'Magdalina', '5@gmail.com', '333');
+
+
+insert into children values 
+
+(null, 'Maria', 'Ivanov', '1@gmail.com', 
+
+(null, 'Sasha', 'Ivanov', '2@gmail.com', '321'), 
+
+(null, 'Vova', 'Ivanov', '3@gmail.com', '456'), 
+
+(null, 'Sveta', 'Petrov', '4@gmail.com', '654'), 
+
+(null, 'Olga', 'Petrov', '5@gmail.com', 'qwe'),
+
+(null, 'Alesia', 'Petrov', '6@gmail.com', 'qwer'),
+
+(null, 'Sveta', 'Sidorov', '7@gmail.com', 'qwert'), 
+
+(null, 'Sasha', 'Sidorov', '8@gmail.com', 'qwerty'),
+
+(null, 'Maria', 'Sidorov', '9@gmail.com', 'qwerty1'),
+
+(null, 'Olga', 'Chubais', '10@gmail.com', 'qwerty12'), 
+
+(null, 'Alesia', 'Chubais', '11@gmail.com', 'qwerty12'),
+
+(null, 'Sasha', 'Chubais', '12@gmail.com', 'qwerty14'),
+(null, 'Oleg', 'Magdalina', '13@gmail.com', 'qwerty15'), 
+
+(null, 'Kolya', 'Magdalina', '14@gmail.com', 'qwerty16'),
+
+(null, 'Petya', 'Magdalina', '15@gmail.com', 'qwerty17');
+
+update children SET
+parent = 'Petrov'
+WHERE parent='Ivanov';
+
+DELETE FROM users 
+WHERE email='5@gmail.com';
+
+
+DELETE FROM children 
+WHERE parent='Sidorov' AND email='qwerty12';
