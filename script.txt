@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `yyy`.`children`
   
 `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `users_idx` (`parent` ASC) VISIBLE,
+  INDEX `users_idx` (`parent` ASC),
   
 CONSTRAINT `users`
     FOREIGN KEY (`parent`)
