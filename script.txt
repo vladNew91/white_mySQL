@@ -69,13 +69,14 @@ values
 (14, 'Kolya', 5, '14@gmail.com', 'qwerty16'),
 (15, 'Petya', 5, '15@gmail.com', 'qwerty17');
 
-update children SET
-parent = 'Petrov'
-WHERE parent='Ivanov';
+UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '4') and (`parent` = '2');
+UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '5') and (`parent` = '2');
+UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '6') and (`parent` = '2');
 
-DELETE FROM users 
-WHERE email='5@gmail.com';
+DELETE FROM `yyy`.`children` WHERE (`id` = '1') and (`parent` = '1');
+DELETE FROM `yyy`.`children` WHERE (`id` = '2') and (`parent` = '1');
+DELETE FROM `yyy`.`children` WHERE (`id` = '3') and (`parent` = '1');
+DELETE FROM `yyy`.`children` WHERE (`id` = '4') and (`parent` = '3');
+DELETE FROM `yyy`.`children` WHERE (`id` = '5') and (`parent` = '3');
 
-
-DELETE FROM children 
-WHERE parent='Sidorov' AND email='qwerty12';
+DELETE FROM `yyy`.`users` WHERE (`id` = '5');
