@@ -30,7 +30,9 @@ CREATE TABLE IF NOT EXISTS `yyy`.`children`
 `email` VARCHAR(45) CHARACTER SET 'latin5' NOT NULL,
   
 `password` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`),
+ 
+PRIMARY KEY (`id`),
+
   INDEX `users_idx` (`parent` ASC),
   
 CONSTRAINT `users`
@@ -40,34 +42,37 @@ CONSTRAINT `users`
     ON UPDATE CASCADE) 
 ENGINE = InnoDB;
 
+
+ 
+use yyy;
+
+
 insert into users
-  (id, firstname, lastname, email, password)
+	(`id`, `firstname`, `lastname`, `email`, `password`)
 values 
-(1, 'Ivan', 'Ivanov', '1@gmail.com', '123'), 
-(2, 'Petr', 'Petrov', '2@gmail.com', '321'), 
-(3, 'Sidr', 'Sidorov', '3@gmail.com', '456'), 
-(4, 'Anna', 'Chubais', '4@gmail.com', '654'), 
-(5, 'Maria', 'Magdalina', '5@gmail.com', '333');
+(null, `Ivan`, `Ivanov`, `1@gmail.com`, `123`), 
+(null, `Petr`, `Petrov`, `2@gmail.com`, `321`), 
+(null, `Sidr`, `Sidorov`, `3@gmail.com`, `456`), 
+(null, `Anna`, `Chubais`, `4@gmail.com`, `654`), 
+(null, `Maria`, `Magdalina`, `5@gmail.com`, `333`);
 
 
-insert into children
-  (id, firstname, parent, email, password)
-values 
-(1, 'Maria', 1, '1@gmail.com' '123'), 
-(2, 'Sasha', 1, '2@gmail.com', '321'), 
-(3, 'Vova', 1, '3@gmail.com', '456'), 
-(4, 'Sveta', 2, '4@gmail.com', '654'), 
-(5, 'Olga', 2, '5@gmail.com', 'qwe'),
-(6, 'Alesia', 2, '6@gmail.com', 'qwer'),
-(7, 'Sveta', 3, '7@gmail.com', 'qwert'), 
-(8, 'Sasha', 3, '8@gmail.com', 'qwerty'),
-(9, 'Maria', 3, '9@gmail.com', 'qwerty1'),
-(10, 'Olga', 4, '10@gmail.com', 'qwerty12'), 
-(11, 'Alesia', 4, '11@gmail.com', 'qwerty12'),
-(12, 'Sasha', 4, '12@gmail.com', 'qwerty14'),
-(13, 'Oleg', 5, '13@gmail.com', 'qwerty15'), 
-(14, 'Kolya', 5, '14@gmail.com', 'qwerty16'),
-(15, 'Petya', 5, '15@gmail.com', 'qwerty17');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('1', 'Maria', '1', '1@gmail.com', '123');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('2', 'Sasha', '1', '2@gmail.com', '321');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('3', 'Olga', '1', '3@gmail.com', '456');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('4', 'Vasya', '2', '4@gmail.com', '654');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('5', 'Sveta', '2', '5@gmail.com', 'qwe');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('6', 'Dima', '2', '6@gmail.com', 'qwer');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('7', 'Olga', '3', '7@gmail.com', 'qwert');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('8', 'Mariya', '3', '8@gmail.com', 'qwerty');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('9', 'Illia', '3', '9@gmail.com', 'qwerty1');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('10', 'Gleb', '4', '10@gmail.com', 'qwerty12');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('11', 'Vasya', '4', '11@gmail.com', 'qwerty12');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('12', 'Stats', '4', '12@gmail.com', 'qwerty13');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('13', 'Lola', '5', '13@gmail.com', 'qwerty14');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('14', 'Monya', '5', '14@gmail.com', 'qwerty15');
+INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('15', 'Fedr', '5', '15@gmail.com', 'qwerty16');
+
 
 UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '4') and (`parent` = '2');
 UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '5') and (`parent` = '2');
@@ -78,5 +83,6 @@ DELETE FROM `yyy`.`children` WHERE (`id` = '2') and (`parent` = '1');
 DELETE FROM `yyy`.`children` WHERE (`id` = '3') and (`parent` = '1');
 DELETE FROM `yyy`.`children` WHERE (`id` = '4') and (`parent` = '3');
 DELETE FROM `yyy`.`children` WHERE (`id` = '5') and (`parent` = '3');
+
 
 DELETE FROM `yyy`.`users` WHERE (`id` = '5');
