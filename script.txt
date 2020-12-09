@@ -43,18 +43,12 @@ CONSTRAINT `users`
 ENGINE = InnoDB;
 
 
- 
-use yyy;
+INSERT INTO `yyy`.`users` (`id`, `firstname`, `lastname`, `email`, `password`) VALUES (null, 'Ivan', 'Ivanov', '1@gmail.com', '123');
+INSERT INTO `yyy`.`users` (`id`, `firstname`, `lastname`, `email`, `password`) VALUES (null, 'Petr', 'Petrov', '2@gmail.com', '321');
+INSERT INTO `yyy`.`users` (`id`, `firstname`, `lastname`, `email`, `password`) VALUES (null, 'Sidr', 'Sidorov', '3@gmail.com', '456');
+INSERT INTO `yyy`.`users` (`id`, `firstname`, `lastname`, `email`, `password`) VALUES (null, 'Anna', 'Chubais', '4@gmail.com', '654');
+INSERT INTO `yyy`.`users` (`id`, `firstname`, `lastname`, `email`, `password`) VALUES (null, 'Maria', 'Magdalina', '5@gmail.com', '333');
 
-
-insert into users
-	(`id`, `firstname`, `lastname`, `email`, `password`)
-values 
-(null, `Ivan`, `Ivanov`, `1@gmail.com`, `123`), 
-(null, `Petr`, `Petrov`, `2@gmail.com`, `321`), 
-(null, `Sidr`, `Sidorov`, `3@gmail.com`, `456`), 
-(null, `Anna`, `Chubais`, `4@gmail.com`, `654`), 
-(null, `Maria`, `Magdalina`, `5@gmail.com`, `333`);
 
 
 INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) VALUES ('1', 'Maria', '1', '1@gmail.com', '123');
@@ -77,6 +71,7 @@ INSERT INTO `yyy`.`children` (`id`, `firstname`, `parent`, `email`, `password`) 
 UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '4') and (`parent` = '2');
 UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '5') and (`parent` = '2');
 UPDATE `yyy`.`children` SET `parent` = '3' WHERE (`id` = '6') and (`parent` = '2');
+
 
 DELETE FROM `yyy`.`children` WHERE (`id` = '1') and (`parent` = '1');
 DELETE FROM `yyy`.`children` WHERE (`id` = '2') and (`parent` = '1');
